@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  brat-ntealan:
+    #image: elvis-cv-app_elvis-portfolio
+    container_name: brat-ntealan
+    build:
+      context: ./
+    volumes:
+      - ./data:/bratdata
+      - ./cfg:/bratcfg
+    ports:
+      - "8080:80"
+    environment:
+      - BRAT_USERNAME=brat-aug-data
+      - BRAT_PASSWORD=brat-aug-password
+      - BRAT_EMAIL=contact@ntealan.org
+    networks:
+      - prod-brat-ntealan
+
+networks:
+  prod-brat-ntealan:
+    driver: bridge
